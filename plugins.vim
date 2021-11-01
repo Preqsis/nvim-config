@@ -17,10 +17,7 @@ call plug#begin('~/.nvim/plugged')
 
     " Better syntax support
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-    Plug 'p00f/nvim-ts-rainbow'
-
-    " Raibow parenthneses plugin
-    Plug 'luochen1990/rainbow'
+    Plug 'p00f/nvim-ts-rainbow' 
 
     " Status / Info bar and its themes
     Plug 'vim-airline/vim-airline'
