@@ -15,7 +15,9 @@ call plug#begin('~/.nvim/plugged')
     Plug 'hrsh7th/cmp-vsnip'
     Plug 'hrsh7th/vim-vsnip'
 
+    " Better syntax support
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    Plug 'p00f/nvim-ts-rainbow'
 
     " Raibow parenthneses plugin
     Plug 'luochen1990/rainbow'
