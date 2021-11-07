@@ -2,7 +2,7 @@
 source $HOME/.config/nvim/plugins.vim
 
 " General setting and other stuff
-source $HOME/.config/nvim/settings.vim
+" source $HOME/.config/nvim/settings.vim
 luafile $HOME/.config/nvim/settings.lua
 
 " Plugin specific config files

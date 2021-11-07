@@ -58,3 +58,6 @@ vim.o.foldlevelstart = 0
 
 -- Fold / Unfold by <Space>
 vim.api.nvim_set_keymap('n', '<Space>', 'zA', {noremap=true, silent=true})
+
+-- Show Startify if no buffers are open
+vim.cmd("autocmd BufDelete * if empty(filter(tabpagebuflist(), '!buflisted(v:val)')) | Startify | endif")
