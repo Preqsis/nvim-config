@@ -1,3 +1,5 @@
+vim.g.mapleader = ","
+
 -- Load plugins
 local Plug = vim.fn["plug#"]
 vim.call('plug#begin', '~/.nvim/plugged')
@@ -43,6 +45,13 @@ vim.call('plug#begin', '~/.nvim/plugged')
     -- Devicons
     -- ... needs specific fornts (Nerd fornts)
     Plug 'ryanoasis/vim-devicons'
+
+    -- Telescope
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-telescope/telescope.nvim'
+
+    Plug 'moll/vim-bbye'
+    Plug 'aymericbeaumet/vim-symlink'
 vim.call('plug#end')
 
 -- Automaticaly install plugins
@@ -68,4 +77,6 @@ require 'nvim-cmp'
 -- treesitter settings
 -- better syntax etc.
 require 'treesitter'
+
+require 'telescope'
 
