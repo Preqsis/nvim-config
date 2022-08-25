@@ -9,13 +9,11 @@ nnoremap <silent> <C-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 " nnoremap <silent> <C-p> <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
 
 lua << EOF
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-require'lspconfig'.pylsp.setup{
-    capabilities = capabilities
-}
+    local lsp = require('lsp-zero')
+    lsp.preset('recommended')
+    lsp.setup()
 
--- Disable diagnostics entirely
-vim.lsp.handlers["textDocument/publishDiagnostics"] = function() end
+    -- Disable diagnostics entirely
+    vim.lsp.handlers["textDocument/publishDiagnostics"] = function() end
 
 EOF
-

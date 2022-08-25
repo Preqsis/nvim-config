@@ -3,18 +3,26 @@ vim.g.mapleader = ","
 -- Load plugins
 local Plug = vim.fn["plug#"]
 vim.call('plug#begin', '~/.nvim/plugged')
-    -- Native neovim LSP
+    -- LSP support
     Plug 'neovim/nvim-lspconfig'
+    Plug 'williamboman/mason.nvim'
+    Plug 'williamboman/mason-lspconfig.nvim'
 
-    Plug 'hrsh7th/cmp-nvim-lsp'
+    -- Autocompletion
+    Plug 'hrsh7th/nvim-cmp'
     Plug 'hrsh7th/cmp-buffer'
     Plug 'hrsh7th/cmp-path'
-    Plug 'hrsh7th/cmp-cmdline'
-    Plug 'hrsh7th/nvim-cmp'
+    Plug 'saadparwaiz1/cmp_luasnip'
+    Plug 'hrsh7th/cmp-nvim-lsp'
+    Plug 'hrsh7th/cmp-nvim-lua'
 
-    -- For vsnip users.
+    -- Snippets
+    Plug 'L3MON4D3/LuaSnip'
+    Plug 'rafamadriz/friendly-snippets'
     Plug 'hrsh7th/cmp-vsnip'
     Plug 'hrsh7th/vim-vsnip'
+
+    Plug 'VonHeikemen/lsp-zero.nvim'
 
     -- Better syntax support
     Plug('nvim-treesitter/nvim-treesitter', {
@@ -68,6 +76,9 @@ vim.cmd([[
     source $HOME/.config/nvim/plug-config/lsp-config.vim
 ]])
 
+-- Cursor line highlight
+-- vim.opt.cursorline = true
+
 -- General settings
 require 'settings'
 
@@ -79,4 +90,3 @@ require 'nvim-cmp'
 require 'treesitter'
 
 require 'telescope'
-
