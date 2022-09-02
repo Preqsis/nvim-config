@@ -71,10 +71,8 @@ autocmd VimEnter *
   \| endif
 ]])
 
-vim.cmd([[
-    source $HOME/.config/nvim/plug-config/airline.vim
-    source $HOME/.config/nvim/plug-config/lsp-config.vim
-]])
+vim.cmd("source $HOME/.config/nvim/plug-config/airline.vim")
+vim.cmd("source $HOME/.config/nvim/plug-config/lsp-config.vim")
 
 -- General settings
 require 'settings'
