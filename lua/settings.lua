@@ -25,7 +25,7 @@ vim.cmd([[
 -- Highlight column 81
 -- very dark red
 vim.opt.colorcolumn = "81"
-vim.api.nvim_set_hl(0, "ColorColumn", {bg="#440000"})
+vim.api.nvim_set_hl(0, "ColorColumn", {bg="#330000"})
 
 -- Force darker background color
 vim.api.nvim_command([[
