@@ -3,13 +3,29 @@ vim.cmd("colorscheme onedark")
 
 -- Set guifont
 -- beacause of devincons -> Nerd fonts
-vim.o.guifont = "DroidSansMono Nerd Font 11"
+vim.o.guifont = "DroidSansMono Nerd Font 13"
 
 -- Show line numbers
 vim.o.number = true
 
+-- Enable cursor Line
+-- highlight numbers only
+vim.opt.cursorline = true
+vim.opt.cursorlineopt = 'number'
+
 -- Set line numbers colors
-vim.cmd("highlight LineNr term=bold cterm=NONE ctermfg=white ctermbg=NONE gui=NONE guifg=white guibg=NONE")
+-- vim.cmd("highlight LineNr term=NONE cterm=NONE ctermfg=white ctermbg=NONE gui=NONE guifg=#008080 guibg=NONE")
+vim.api.nvim_set_hl(0, "LineNr", {fg="#008080"})
+
+-- Set current line nuber color
+vim.cmd([[
+    autocmd ColorScheme * highlight CursorLineNr cterm=bold term=bold gui=bold ctermbg=15 ctermfg=8 guifg=#ffff00
+]])
+
+-- Highlight column 81
+-- very dark red
+vim.opt.colorcolumn = "81"
+vim.api.nvim_set_hl(0, "ColorColumn", {bg="#440000"})
 
 -- Force darker background color
 vim.api.nvim_command([[
@@ -61,3 +77,16 @@ vim.api.nvim_set_keymap('n', '<Space>', 'zA', {noremap=true, silent=true})
 
 -- Show Startify if no buffers are open
 vim.cmd("autocmd BufDelete * if empty(filter(tabpagebuflist(), '!buflisted(v:val)')) | Startify | endif")
+
+-- VimWIKI settings
+-- use normal markdown
+vim.g.vimwiki_list = {{
+    path = '/Users/jirikveton/Documents/vimwiki',
+    syntax = 'markdown', 
+    ext = ".md"
+}}
+
+--NvimTree settings
+require("nvim-tree").setup()
+vim.api.nvim_set_keymap('n', '<C-g>', ':NvimTreeToggle<CR>', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('i', '<C-g>', '<Esc>:NvimTreeToggle<CR>', {noremap=true, silent=true})

@@ -36,10 +36,9 @@ vim.call('plug#begin', '~/.nvim/plugged')
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
 
-    -- Nerdtree file explorer
-    Plug 'preservim/nerdtree'
-    --Plug 'Xuyuanp/nedtree-git-plugin'
-    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+    -- Nvimtree file explorer
+    Plug 'kyazdani42/nvim-web-devicons'
+    Plug 'kyazdani42/nvim-tree.lua'
 
     -- Themes
     Plug 'joshdick/onedark.vim'
@@ -60,6 +59,8 @@ vim.call('plug#begin', '~/.nvim/plugged')
 
     Plug 'moll/vim-bbye'
     Plug 'aymericbeaumet/vim-symlink'
+
+    Plug 'vimwiki/vimwiki'
 vim.call('plug#end')
 
 -- Automaticaly install plugins
@@ -72,12 +73,8 @@ autocmd VimEnter *
 
 vim.cmd([[
     source $HOME/.config/nvim/plug-config/airline.vim
-    source $HOME/.config/nvim/plug-config/nerdtree.vim
     source $HOME/.config/nvim/plug-config/lsp-config.vim
 ]])
-
--- Cursor line highlight
--- vim.opt.cursorline = true
 
 -- General settings
 require 'settings'
