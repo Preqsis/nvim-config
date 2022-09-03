@@ -14,7 +14,6 @@ vim.opt.cursorline = true
 vim.opt.cursorlineopt = 'number'
 
 -- Set line numbers colors
--- vim.cmd("highlight LineNr term=NONE cterm=NONE ctermfg=white ctermbg=NONE gui=NONE guifg=#008080 guibg=NONE")
 vim.api.nvim_set_hl(0, "LineNr", {fg="#008080"})
 
 -- Set current line nuber color
@@ -25,7 +24,7 @@ vim.cmd([[
 -- Highlight column 81
 -- very dark red
 vim.opt.colorcolumn = "81"
-vim.api.nvim_set_hl(0, "ColorColumn", {bg="#330000"})
+vim.api.nvim_set_hl(0, "ColorColumn", {bg="#270000"})
 
 -- Force darker background color
 vim.api.nvim_command([[
@@ -101,7 +100,9 @@ vim.g.vimwiki_list = {{
 -- NvimTree settings
 require("nvim-tree").setup()
 vim.api.nvim_set_keymap('n', '<C-g>', ':NvimTreeToggle<CR>', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('n', '<F8>', ':NvimTreeToggle<CR>', {noremap=true, silent=true})
 vim.api.nvim_set_keymap('i', '<C-g>', '<Esc>:NvimTreeToggle<CR>', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('i', '<F8>', '<Esc>:NvimTreeToggle<CR>', {noremap=true, silent=true})
 
 -- Enable bufferline
 require("bufferline").setup{}

@@ -96,9 +96,6 @@ require 'settings'
 -- Completion settins
 require 'nvim-cmp'
 
--- LSP settings
-require 'lsp-config'
-
 -- treesitter settings
 -- better syntax etc.
 require 'treesitter'
@@ -107,3 +104,6 @@ require 'treesitter'
 require 'telescope'
 
 require 'nerd-commenter'
+
+-- LSP settings
+require 'lsp-config'
