@@ -77,6 +77,9 @@ vim.call('plug#begin', '~/.nvim/plugged')
     Plug 'tpope/vim-fugitive' -- Git wrapper accessible through :Git ... 
     Plug 'tpope/vim-rhubarb' -- Enables GBrowse
     Plug 'junegunn/gv.vim' -- Commit browser
+
+    -- Nerd commenter
+    Plug 'preservim/nerdcommenter'
 vim.call('plug#end')
 
 -- Automaticaly install plugins
@@ -102,3 +105,5 @@ require 'treesitter'
 
 -- telescope settings
 require 'telescope'
+
+require 'nerd-commenter'
