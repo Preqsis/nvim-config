@@ -30,11 +30,15 @@ vim.call('plug#begin', '~/.nvim/plugged')
             vim.call(':TSUpdate')
         end
         })
-    Plug 'p00f/nvim-ts-rainbow' 
+    --Plug 'p00f/nvim-ts-rainbow' 
+    -- Rainbow brackets    
+    Plug 'frazrepo/vim-rainbow'
 
     -- Status / Info bar and its themes
-    Plug 'vim-airline/vim-airline'
-    Plug 'vim-airline/vim-airline-themes'
+    Plug 'nvim-lualine/lualine.nvim'
+
+    -- lua bufferline
+    Plug 'akinsho/bufferline.nvim'
 
     -- Nvimtree file explorer
     Plug 'kyazdani42/nvim-web-devicons'
@@ -42,6 +46,7 @@ vim.call('plug#begin', '~/.nvim/plugged')
 
     -- Themes
     Plug 'joshdick/onedark.vim'
+    Plug 'EdenEast/nightfox.nvim'
 
     -- Startup quick file access
     Plug 'mhinz/vim-startify'
@@ -49,18 +54,16 @@ vim.call('plug#begin', '~/.nvim/plugged')
     -- Auto pair for '(' '[' '{'
     Plug 'jiangmiao/auto-pairs'
 
-    -- Devicons
-    -- ... needs specific fornts (Nerd fornts)
-    Plug 'ryanoasis/vim-devicons'
-
     -- Telescope
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim'
 
     Plug 'moll/vim-bbye'
     Plug 'aymericbeaumet/vim-symlink'
-
     Plug 'vimwiki/vimwiki'
+
+    Plug 'lukas-reineke/indent-blankline.nvim' 
+    
 vim.call('plug#end')
 
 -- Automaticaly install plugins
@@ -71,17 +74,19 @@ autocmd VimEnter *
   \| endif
 ]])
 
-vim.cmd("source $HOME/.config/nvim/plug-config/airline.vim")
-vim.cmd("source $HOME/.config/nvim/plug-config/lsp-config.vim")
-
 -- General settings
 require 'settings'
 
 -- Completion settins
 require 'nvim-cmp'
 
+-- LSP settings
+require 'lsp-config'
+
 -- treesitter settings
 -- better syntax etc.
 require 'treesitter'
 
+-- telescope settings
 require 'telescope'
+

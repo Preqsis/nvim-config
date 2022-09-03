@@ -54,7 +54,7 @@ vim.o.backup        = false
 vim.o.writebackup   = false
 vim.o.swapfile      = false
 
--- Cycle buffers by ctrl+n ro cltr+p
+-- Cycle buffers by ctrl+n or cltr+p
 vim.api.nvim_set_keymap('n', '<C-n>', ':bnext<CR>', {noremap=true, silent=true})
 vim.api.nvim_set_keymap('n', '<C-p>', ':bprevious<CR>', {noremap=true, silent=true})
 
@@ -78,6 +78,18 @@ vim.api.nvim_set_keymap('n', '<Space>', 'zA', {noremap=true, silent=true})
 -- Show Startify if no buffers are open
 vim.cmd("autocmd BufDelete * if empty(filter(tabpagebuflist(), '!buflisted(v:val)')) | Startify | endif")
 
+-- Startify use lua nvim-web-devicons
+function _G.webDevIcons(path)
+  local filename = vim.fn.fnamemodify(path, ':t')
+  local extension = vim.fn.fnamemodify(path, ':e')
+  return require'nvim-web-devicons'.get_icon(filename, extension, { default = true })
+end
+vim.cmd([[
+function! StartifyEntryFormat() abort
+  return 'v:lua.webDevIcons(absolute_path) . " " . entry_path'
+endfunction
+]])
+
 -- VimWIKI settings
 -- use normal markdown
 vim.g.vimwiki_list = {{
@@ -86,7 +98,62 @@ vim.g.vimwiki_list = {{
     ext = ".md"
 }}
 
---NvimTree settings
+-- NvimTree settings
 require("nvim-tree").setup()
 vim.api.nvim_set_keymap('n', '<C-g>', ':NvimTreeToggle<CR>', {noremap=true, silent=true})
 vim.api.nvim_set_keymap('i', '<C-g>', '<Esc>:NvimTreeToggle<CR>', {noremap=true, silent=true})
+
+-- Enable bufferline
+require("bufferline").setup{}
+
+-- Activate 'rainbow brackets'
+vim.cmd("let g:rainbow_active = 1")
+
+-- Lualine enable and setup
+require('lualine').setup({
+    options = {
+        icons_enabled = true,
+        theme = 'auto',
+        component_separators = { left = '', right = ''},
+        section_separators = { left = '', right = ''},
+        disabled_filetypes = {
+        statusline = {},
+        winbar = {},
+        },
+        ignore_focus = {},
+        always_divide_middle = true,
+        globalstatus = false,
+        refresh = {
+        statusline = 1000,
+        tabline = 1000,
+        winbar = 1000,
+        }
+    },
+    sections = {
+        lualine_a = {'mode'},
+        lualine_b = {'branch', 'diff', 'diagnostics'},
+        lualine_c = {'filename'},
+        lualine_x = {'encoding', 'fileformat', 'filetype'},
+        lualine_y = {'progress'},
+        lualine_z = {'location'}
+    },
+    inactive_sections = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = {'filename'},
+        lualine_x = {'location'},
+        lualine_y = {},
+        lualine_z = {}
+    },
+    tabline = {},
+    winbar = {},
+    inactive_winbar = {},
+    extensions = {}
+})
+
+require("indent_blankline").setup {
+    -- for example, context is off by default, use this to turn it on
+    show_current_context = true,
+    -- show_current_context_start = true,
+}
+
