@@ -22,6 +22,7 @@ vim.call('plug#begin', '~/.nvim/plugged')
     Plug 'hrsh7th/cmp-vsnip'
     Plug 'hrsh7th/vim-vsnip'
 
+    -- Easy LSP settings
     Plug 'VonHeikemen/lsp-zero.nvim'
 
     -- Better syntax support
@@ -29,19 +30,21 @@ vim.call('plug#begin', '~/.nvim/plugged')
         ['do'] = function()
             vim.call(':TSUpdate')
         end
-        })
-    --Plug 'p00f/nvim-ts-rainbow' 
+    })
+
     -- Rainbow brackets    
-    Plug 'frazrepo/vim-rainbow'
+    Plug 'p00f/nvim-ts-rainbow' 
 
     -- Status / Info bar and its themes
     Plug 'nvim-lualine/lualine.nvim'
 
     -- lua bufferline
     Plug 'akinsho/bufferline.nvim'
+    
+    -- Pretty dev icons
+    Plug 'kyazdani42/nvim-web-devicons'
 
     -- Nvimtree file explorer
-    Plug 'kyazdani42/nvim-web-devicons'
     Plug 'kyazdani42/nvim-tree.lua'
 
     -- Themes
@@ -58,12 +61,22 @@ vim.call('plug#begin', '~/.nvim/plugged')
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim'
 
+    -- vimwiki (fot note taking)
     Plug 'moll/vim-bbye'
     Plug 'aymericbeaumet/vim-symlink'
     Plug 'vimwiki/vimwiki'
 
+    -- Indentation hightlighting
     Plug 'lukas-reineke/indent-blankline.nvim' 
-    
+
+    -- Tagbar
+    Plug 'preservim/tagbar'
+
+    -- Git related
+    Plug 'mhinz/vim-signify' -- Enables hunks
+    Plug 'tpope/vim-fugitive' -- Git wrapper accessible through :Git ... 
+    Plug 'tpope/vim-rhubarb' -- Enables GBrowse
+    Plug 'junegunn/gv.vim' -- Commit browser
 vim.call('plug#end')
 
 -- Automaticaly install plugins
@@ -89,4 +102,3 @@ require 'treesitter'
 
 -- telescope settings
 require 'telescope'
-

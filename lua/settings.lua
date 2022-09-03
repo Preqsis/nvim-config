@@ -107,7 +107,7 @@ vim.api.nvim_set_keymap('i', '<C-g>', '<Esc>:NvimTreeToggle<CR>', {noremap=true,
 require("bufferline").setup{}
 
 -- Activate 'rainbow brackets'
-vim.cmd("let g:rainbow_active = 1")
+vim.g.rainbow_active = 1
 
 -- Lualine enable and setup
 require('lualine').setup({
@@ -157,3 +157,10 @@ require("indent_blankline").setup {
     -- show_current_context_start = true,
 }
 
+-- Tagbar settings
+vim.g.Tlist_Ctags_Cmd='/usr/local/Cellar/ctags/5.8_1/bin/ctags'
+vim.api.nvim_set_keymap('n', '<F9>', ':TagbarToggle<CR>', {noremap=true, silent=true})
+
+-- Signify settings
+vim.g.signify_sign_show_count = 0
+vim.g.signify_sign_show_text = 1
