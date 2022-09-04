@@ -162,3 +162,7 @@ vim.api.nvim_set_keymap('n', '<F9>', ':TagbarToggle<CR>', {noremap=true, silent=
 -- Signify settings
 vim.g.signify_sign_show_count = 0
 vim.g.signify_sign_show_text = 1
+
+-- :Git usable as :git
+-- because I am lazzy
+vim.cmd("cnoreabbrev git Git")
