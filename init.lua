@@ -39,7 +39,7 @@ vim.call('plug#begin', '~/.nvim/plugged')
     Plug 'nvim-lualine/lualine.nvim'
 
     -- lua bufferline
-    Plug 'akinsho/bufferline.nvim'
+    Plug 'romgrk/barbar.nvim'
     
     -- Pretty dev icons
     Plug 'kyazdani42/nvim-web-devicons'
@@ -93,7 +93,7 @@ autocmd VimEnter *
 -- General settings
 require 'settings'
 
--- Completion settins
+-- Completion settings
 require 'nvim-cmp'
 
 -- treesitter settings
@@ -103,7 +103,12 @@ require 'treesitter'
 -- telescope settings
 require 'telescope'
 
+-- nerdcommenter settings
+-- multiline coments etc.
 require 'nerd-commenter'
+
+-- barbar bufferline settings
+require 'barbar'
 
 -- LSP settings
 require 'lsp-config'

@@ -104,9 +104,6 @@ vim.api.nvim_set_keymap('n', '<F8>', ':NvimTreeToggle<CR>', {noremap=true, silen
 vim.api.nvim_set_keymap('i', '<C-g>', '<Esc>:NvimTreeToggle<CR>', {noremap=true, silent=true})
 vim.api.nvim_set_keymap('i', '<F8>', '<Esc>:NvimTreeToggle<CR>', {noremap=true, silent=true})
 
--- Enable bufferline
-require("bufferline").setup{}
-
 -- Activate 'rainbow brackets'
 vim.g.rainbow_active = 1
 
