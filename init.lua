@@ -80,6 +80,9 @@ vim.call('plug#begin', '~/.nvim/plugged')
 
     -- Nerd commenter
     Plug 'preservim/nerdcommenter'
+
+    -- Neogen docstring generator
+    Plug('danymat/neogen')
 vim.call('plug#end')
 
 -- Automaticaly install plugins
@@ -112,3 +115,14 @@ require 'barbar'
 
 -- LSP settings
 require 'lsp-config'
+
+require('neogen').setup({
+    -- enabled = true,
+    -- languages = {
+        -- python = {
+            -- template = {
+                -- annotation_convention = "numpydoc"
+            -- }
+        -- }
+    -- }
+})

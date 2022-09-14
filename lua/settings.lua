@@ -158,6 +158,7 @@ require("indent_blankline").setup {
 -- Tagbar settings
 vim.g.Tlist_Ctags_Cmd='/usr/local/Cellar/ctags/5.8_1/bin/ctags'
 vim.api.nvim_set_keymap('n', '<F9>', ':TagbarToggle<CR>', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('n', '<C-h>', ':TagbarToggle<CR>', {noremap=true, silent=true})
 
 -- Signify settings
 vim.g.signify_sign_show_count = 0
@@ -166,3 +167,16 @@ vim.g.signify_sign_show_text = 1
 -- :Git usable as :git
 -- because I am lazzy
 vim.cmd("cnoreabbrev git Git")
+
+-- Line wrapping
+vim.cmd("setlocal wrap linebreak nolist")
+vim.cmd("set virtualedit=")
+vim.cmd("setlocal display+=lastline")
+vim.api.nvim_set_keymap('n', '<Up>', 'gk', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('n', '<Down>', 'gj', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('n', '<Home>', 'g<Home>', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('n', '<End>', 'g<End>', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('i', '<Up>', '<C-o>gk', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('i', '<Down>', '<C-o>gj', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('i', '<Home>', '<C-o>g<Home>', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('i', '<End>', '<C-o>g<End>', {noremap=true, silent=true})
