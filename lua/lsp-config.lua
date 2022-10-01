@@ -1,7 +1,16 @@
 -- LSP setup
 local lsp = require('lsp-zero')
 lsp.preset('recommended')
-lsp.setup()
+
+lsp.setup({
+    servers = {
+        pyright = {
+            analysis = {
+                autoImportCompletion = false
+            }
+        }
+    }
+})
 
 -- Disable diagnostics entirely
 vim.lsp.handlers["textDocument/publishDiagnostics"] = function() end
