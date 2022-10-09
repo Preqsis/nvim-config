@@ -97,8 +97,20 @@ vim.g.vimwiki_list = {{
     ext = ".md"
 }}
 
+require('nvim-rooter').setup {
+    rooter_patterns = { '.git', '.hg', '.svn' },
+    trigger_patterns = { '*' },
+    manual = false
+}
+
 -- NvimTree settings
-require("nvim-tree").setup()
+require("nvim-tree").setup({
+    update_cwd = true,
+    update_focused_file = {
+        enable = true,
+        update_cwd = true
+    }
+})
 vim.api.nvim_set_keymap('n', '<C-g>', ':NvimTreeToggle<CR>', {noremap=true, silent=true})
 vim.api.nvim_set_keymap('n', '<F8>', ':NvimTreeToggle<CR>', {noremap=true, silent=true})
 vim.api.nvim_set_keymap('i', '<C-g>', '<Esc>:NvimTreeToggle<CR>', {noremap=true, silent=true})
@@ -130,7 +142,12 @@ require('lualine').setup({
     sections = {
         lualine_a = {'mode'},
         lualine_b = {'branch', 'diff', 'diagnostics'},
-        lualine_c = {'filename'},
+        lualine_c = {
+            {
+                'filename',
+                path = 1
+            }
+        },
         lualine_x = {'encoding', 'fileformat', 'filetype'},
         lualine_y = {'progress'},
         lualine_z = {'location'}

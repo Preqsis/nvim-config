@@ -32,7 +32,7 @@ vim.call('plug#begin', '~/.nvim/plugged')
         end
     })
 
-    -- Rainbow brackets    
+    -- Rainbow brackets
     Plug 'p00f/nvim-ts-rainbow' 
 
     -- Status / Info bar and its themes
@@ -61,7 +61,10 @@ vim.call('plug#begin', '~/.nvim/plugged')
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim'
 
-    -- vimwiki (fot note taking)
+    -- Rooter
+    Plug 'notjedi/nvim-rooter.lua'
+    
+    -- vimwiki (note taking)
     Plug 'moll/vim-bbye'
     Plug 'aymericbeaumet/vim-symlink'
     Plug 'vimwiki/vimwiki'
