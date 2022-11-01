@@ -5,8 +5,12 @@ vim.cmd("colorscheme onedark")
 -- beacause of devincons -> Nerd fonts
 vim.o.guifont = "DroidSansMono Nerd Font 13"
 
+-- Use system clipboard
+vim.api.nvim_command([[set clipboard=unnamed]])
+
 -- Show line numbers
-vim.o.number = true
+vim.wo.number = true
+vim.wo.relativenumber = true
 
 -- Enable cursor Line
 -- highlight numbers only
@@ -197,3 +201,27 @@ vim.api.nvim_set_keymap('i', '<Up>', '<C-o>gk', {noremap=true, silent=true})
 vim.api.nvim_set_keymap('i', '<Down>', '<C-o>gj', {noremap=true, silent=true})
 vim.api.nvim_set_keymap('i', '<Home>', '<C-o>g<Home>', {noremap=true, silent=true})
 vim.api.nvim_set_keymap('i', '<End>', '<C-o>g<End>', {noremap=true, silent=true})
+
+-- Czech chars are numbers for easier motions
+-- in normal mode
+vim.api.nvim_set_keymap('n', '+', '1', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('n', 'ě', '2', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('n', 'š', '3', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('n', 'č', '4', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('n', 'ř', '5', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('n', 'ž', '6', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('n', 'ý', '7', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('n', 'á', '8', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('n', 'í', '9', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('n', 'é', '0', {noremap=true, silent=true})
+-- in visual mode
+vim.api.nvim_set_keymap('v', '+', '1', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('v', 'ě', '2', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('v', 'š', '3', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('v', 'č', '4', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('v', 'ř', '5', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('v', 'ž', '6', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('v', 'ý', '7', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('v', 'á', '8', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('v', 'í', '9', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('v', 'é', '0', {noremap=true, silent=true})
