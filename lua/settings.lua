@@ -1,6 +1,3 @@
--- Set colorscheme
-vim.cmd("colorscheme onedark")
-
 -- Set guifont
 -- beacause of devincons -> Nerd fonts
 vim.o.guifont = "DroidSansMono Nerd Font 13"
@@ -19,25 +16,12 @@ vim.opt.cursorlineopt = 'number'
 
 -- Set line numbers colors
 vim.api.nvim_set_hl(0, "LineNr", {fg="#008080"})
-
--- Set current line nuber color
-vim.cmd([[
-    autocmd ColorScheme * highlight CursorLineNr cterm=bold term=bold gui=bold ctermbg=15 ctermfg=8 guifg=#ffff00
-]])
+vim.api.nvim_set_hl(0, "CursorLineNr", {fg="#ffff00"})
 
 -- Highlight column 81
 -- very dark red
 vim.opt.colorcolumn = "81"
-vim.api.nvim_set_hl(0, "ColorColumn", {bg="#270000"})
-
--- Force darker background color
-vim.api.nvim_command([[
-    augroup ChangeBackgroudColour
-        autocmd colorscheme * :hi normal guibg=#0a0a0a
-    augroup END
-]])
-vim.o.termguicolors = true
-vim.cmd [[silent! colorscheme snow]]
+vim.api.nvim_set_hl(0, "ColorColumn", {bg="#220404"})
 
 -- Real programmers don't use TABs but spaces
 vim.o.tabstop       = 4
@@ -57,41 +41,11 @@ vim.o.backup        = false
 vim.o.writebackup   = false
 vim.o.swapfile      = false
 
--- Cycle buffers by ctrl+n or cltr+p
-vim.api.nvim_set_keymap('n', '<C-n>', ':bnext<CR>', {noremap=true, silent=true})
-vim.api.nvim_set_keymap('n', '<C-p>', ':bprevious<CR>', {noremap=true, silent=true})
-
--- Quick save by ctrl+s
-vim.api.nvim_set_keymap('n', '<C-S>', ':update<CR>', {noremap=true, silent=true})
-vim.api.nvim_set_keymap('v', '<C-S>', '<C-C>:update<CR>', {noremap=true, silent=true})
-vim.api.nvim_set_keymap('i', '<C-S>', '<C-O>:update<CR>', {noremap=true, silent=true})
-
--- Quick window navigaion by ctrl+w
-vim.api.nvim_set_keymap('n', '<C-w>', '<C-w>w', {noremap=true, silent=true})
-
 -- Enable code folding
 vim.o.foldmethod = 'indent'
 
 -- Open with first level automaticaly folded
 vim.o.foldlevelstart = 0
-
--- Fold / Unfold by <Space>
-vim.api.nvim_set_keymap('n', '<Space>', 'zA', {noremap=true, silent=true})
-
--- Show Startify if no buffers are open
-vim.cmd("autocmd BufDelete * if empty(filter(tabpagebuflist(), '!buflisted(v:val)')) | Startify | endif")
-
--- Startify use lua nvim-web-devicons
-function _G.webDevIcons(path)
-  local filename = vim.fn.fnamemodify(path, ':t')
-  local extension = vim.fn.fnamemodify(path, ':e')
-  return require'nvim-web-devicons'.get_icon(filename, extension, { default = true })
-end
-vim.cmd([[
-function! StartifyEntryFormat() abort
-  return 'v:lua.webDevIcons(absolute_path) . " " . entry_path'
-endfunction
-]])
 
 -- VimWIKI settings
 -- use normal markdown
@@ -101,127 +55,17 @@ vim.g.vimwiki_list = {{
     ext = ".md"
 }}
 
-require('nvim-rooter').setup {
-    rooter_patterns = { '.git', '.hg', '.svn' },
-    trigger_patterns = { '*' },
-    manual = false
-}
-
--- NvimTree settings
-require("nvim-tree").setup({
-    update_cwd = true,
-    update_focused_file = {
-        enable = true,
-        update_cwd = true
-    }
-})
-vim.api.nvim_set_keymap('n', '<C-g>', ':NvimTreeToggle<CR>', {noremap=true, silent=true})
-vim.api.nvim_set_keymap('n', '<F8>', ':NvimTreeToggle<CR>', {noremap=true, silent=true})
-vim.api.nvim_set_keymap('i', '<C-g>', '<Esc>:NvimTreeToggle<CR>', {noremap=true, silent=true})
-vim.api.nvim_set_keymap('i', '<F8>', '<Esc>:NvimTreeToggle<CR>', {noremap=true, silent=true})
-
 -- Activate 'rainbow brackets'
 vim.g.rainbow_active = 1
 
--- Lualine enable and setup
-require('lualine').setup({
-    options = {
-        icons_enabled = true,
-        theme = 'auto',
-        component_separators = { left = '', right = ''},
-        section_separators = { left = '', right = ''},
-        disabled_filetypes = {
-        statusline = {},
-        winbar = {},
-        },
-        ignore_focus = {},
-        always_divide_middle = true,
-        globalstatus = false,
-        refresh = {
-        statusline = 1000,
-        tabline = 1000,
-        winbar = 1000,
-        }
-    },
-    sections = {
-        lualine_a = {'mode'},
-        lualine_b = {'branch', 'diff', 'diagnostics'},
-        lualine_c = {
-            {
-                'filename',
-                path = 1
-            }
-        },
-        lualine_x = {'encoding', 'fileformat', 'filetype'},
-        lualine_y = {'progress'},
-        lualine_z = {'location'}
-    },
-    inactive_sections = {
-        lualine_a = {},
-        lualine_b = {},
-        lualine_c = {'filename'},
-        lualine_x = {'location'},
-        lualine_y = {},
-        lualine_z = {}
-    },
-    tabline = {},
-    winbar = {},
-    inactive_winbar = {},
-    extensions = {}
-})
-
-require("indent_blankline").setup {
-    -- for example, context is off by default, use this to turn it on
-    show_current_context = true,
-    -- show_current_context_start = true,
-}
-
 -- Tagbar settings
 vim.g.Tlist_Ctags_Cmd='/usr/local/Cellar/ctags/5.8_1/bin/ctags'
-vim.api.nvim_set_keymap('n', '<F9>', ':TagbarToggle<CR>', {noremap=true, silent=true})
-vim.api.nvim_set_keymap('n', '<C-h>', ':TagbarToggle<CR>', {noremap=true, silent=true})
 
 -- Signify settings
 vim.g.signify_sign_show_count = 0
 vim.g.signify_sign_show_text = 1
 
--- :Git usable as :git
--- because I am lazzy
-vim.cmd("cnoreabbrev git Git")
-
 -- Line wrapping
 vim.cmd("setlocal wrap linebreak nolist")
 vim.cmd("set virtualedit=")
 vim.cmd("setlocal display+=lastline")
-vim.api.nvim_set_keymap('n', '<Up>', 'gk', {noremap=true, silent=true})
-vim.api.nvim_set_keymap('n', '<Down>', 'gj', {noremap=true, silent=true})
-vim.api.nvim_set_keymap('n', '<Home>', 'g<Home>', {noremap=true, silent=true})
-vim.api.nvim_set_keymap('n', '<End>', 'g<End>', {noremap=true, silent=true})
-vim.api.nvim_set_keymap('i', '<Up>', '<C-o>gk', {noremap=true, silent=true})
-vim.api.nvim_set_keymap('i', '<Down>', '<C-o>gj', {noremap=true, silent=true})
-vim.api.nvim_set_keymap('i', '<Home>', '<C-o>g<Home>', {noremap=true, silent=true})
-vim.api.nvim_set_keymap('i', '<End>', '<C-o>g<End>', {noremap=true, silent=true})
-
--- Czech chars are numbers for easier motions
--- in normal mode
-vim.api.nvim_set_keymap('n', '+', '1', {noremap=true, silent=true})
-vim.api.nvim_set_keymap('n', 'ě', '2', {noremap=true, silent=true})
-vim.api.nvim_set_keymap('n', 'š', '3', {noremap=true, silent=true})
-vim.api.nvim_set_keymap('n', 'č', '4', {noremap=true, silent=true})
-vim.api.nvim_set_keymap('n', 'ř', '5', {noremap=true, silent=true})
-vim.api.nvim_set_keymap('n', 'ž', '6', {noremap=true, silent=true})
-vim.api.nvim_set_keymap('n', 'ý', '7', {noremap=true, silent=true})
-vim.api.nvim_set_keymap('n', 'á', '8', {noremap=true, silent=true})
-vim.api.nvim_set_keymap('n', 'í', '9', {noremap=true, silent=true})
-vim.api.nvim_set_keymap('n', 'é', '0', {noremap=true, silent=true})
--- in visual mode
-vim.api.nvim_set_keymap('v', '+', '1', {noremap=true, silent=true})
-vim.api.nvim_set_keymap('v', 'ě', '2', {noremap=true, silent=true})
-vim.api.nvim_set_keymap('v', 'š', '3', {noremap=true, silent=true})
-vim.api.nvim_set_keymap('v', 'č', '4', {noremap=true, silent=true})
-vim.api.nvim_set_keymap('v', 'ř', '5', {noremap=true, silent=true})
-vim.api.nvim_set_keymap('v', 'ž', '6', {noremap=true, silent=true})
-vim.api.nvim_set_keymap('v', 'ý', '7', {noremap=true, silent=true})
-vim.api.nvim_set_keymap('v', 'á', '8', {noremap=true, silent=true})
-vim.api.nvim_set_keymap('v', 'í', '9', {noremap=true, silent=true})
-vim.api.nvim_set_keymap('v', 'é', '0', {noremap=true, silent=true})

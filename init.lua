@@ -31,28 +31,32 @@ vim.call('plug#begin', '~/.nvim/plugged')
             vim.call(':TSUpdate')
         end
     })
-
-    -- Rainbow brackets
     Plug 'p00f/nvim-ts-rainbow' 
+    
+    -- Pretty dev icons
+    Plug 'kyazdani42/nvim-web-devicons'
 
     -- Status / Info bar and its themes
     Plug 'nvim-lualine/lualine.nvim'
 
     -- lua bufferline
-    Plug 'romgrk/barbar.nvim'
-    
-    -- Pretty dev icons
-    Plug 'kyazdani42/nvim-web-devicons'
+    -- Plug 'romgrk/barbar.nvim'
+    Plug('akinsho/bufferline.nvim', {
+        tag = "v3.*",
+        requires = 'kyazdani42/nvim-web-devicons'
+    })
 
     -- Nvimtree file explorer
     Plug 'kyazdani42/nvim-tree.lua'
 
     -- Themes
-    Plug 'joshdick/onedark.vim'
-    Plug 'EdenEast/nightfox.nvim'
+    -- Plug 'navarasu/onedark.nvim'
+    -- Plug('folke/tokyonight.nvim')
+    -- Plug 'EdenEast/nightfox.nvim'
+    Plug 'rebelot/kanagawa.nvim'
 
-    -- Startup quick file access
-    Plug 'mhinz/vim-startify'
+    -- Alpha start page
+    Plug('goolord/alpha-nvim')
 
     -- Auto pair for '(' '[' '{'
     Plug 'jiangmiao/auto-pairs'
@@ -76,10 +80,11 @@ vim.call('plug#begin', '~/.nvim/plugged')
     Plug 'preservim/tagbar'
 
     -- Git related
-    Plug 'mhinz/vim-signify' -- Enables hunks
+    Plug 'lewis6991/gitsigns.nvim' -- Git hunks
     Plug 'tpope/vim-fugitive' -- Git wrapper accessible through :Git ... 
     Plug 'tpope/vim-rhubarb' -- Enables GBrowse
     Plug 'junegunn/gv.vim' -- Commit browser
+    Plug 'sindrets/diffview.nvim' -- Git diff view
 
     -- Nerd commenter
     Plug 'preservim/nerdcommenter'
@@ -91,41 +96,28 @@ vim.call('plug#end')
 -- Automaticaly install plugins
 vim.cmd([[
 autocmd VimEnter *
-  \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-  \|   PlugInstall --sync | q
-  \| endif
+\  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+\|   PlugInstall --sync | q
+\| endif
 ]])
+
+-- Colorscheme 
+vim.api.nvim_command("colorscheme kanagawa")
+-- vim.api.nvim_set_hl(0, "ActiveWindow", {bg="#000000"})
+-- vim.api.nvim_set_hl(0, "InactiveWindow", {bg="#1f1f28"})
+-- vim.cmd([[set winhighlight=Normal:ActiveWindow,NormalNC:InactiveWindow]])
+
+-- Setups
+require 'setups'
 
 -- General settings
 require 'settings'
 
--- Completion settings
-require 'nvim-cmp'
-
--- treesitter settings
--- better syntax etc.
-require 'treesitter'
-
--- telescope settings
-require 'telescope'
-
--- nerdcommenter settings
--- multiline coments etc.
-require 'nerd-commenter'
-
--- barbar bufferline settings
-require 'barbar'
+-- Keymaps
+require 'keymaps'
 
 -- LSP settings
 require 'lsp-config'
 
-require('neogen').setup({
-    -- enabled = true,
-    -- languages = {
-        -- python = {
-            -- template = {
-                -- annotation_convention = "numpydoc"
-            -- }
-        -- }
-    -- }
-})
+-- Completion settings
+require 'nvim-cmp'
