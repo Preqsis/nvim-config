@@ -9,6 +9,19 @@ vim.api.nvim_set_keymap('i', '<C-S>', '<C-O>:update<CR>', {noremap=true, silent=
 
 -- Quick window navigaion by ctrl+w
 vim.api.nvim_set_keymap('n', '<C-w>', '<C-w>w', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('n', '<C-h>', '<C-w>h', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>j', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', {noremap=true, silent=true})
+
+-- Quick splits
+vim.api.nvim_set_keymap('n', '<leader>vs', ":vsplit<CR>", {noremap=true, silent=true})
+vim.api.nvim_set_keymap('n', '<leader>ss', ":split<CR>", {noremap=true, silent=true})
+
+-- Custom vertical movements
+-- half page down / up + center page
+vim.api.nvim_set_keymap('n', '<C-d>', '<C-d>zz', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('n', '<C-u>', '<C-u>zz', {noremap=true, silent=true})
 
 -- Fold / Unfold by <Space>
 vim.api.nvim_set_keymap('n', '<Space>', 'zA', {noremap=true, silent=true})
@@ -21,7 +34,7 @@ vim.api.nvim_set_keymap('i', '<F8>', '<Esc>:NvimTreeToggle<CR>', {noremap=true, 
 
 -- TagBar
 vim.api.nvim_set_keymap('n', '<F9>', ':TagbarToggle<CR>', {noremap=true, silent=true})
-vim.api.nvim_set_keymap('n', '<C-h>', ':TagbarToggle<CR>', {noremap=true, silent=true})
+vim.api.nvim_set_keymap('i', '<F9>', ':TagbarToggle<CR>', {noremap=true, silent=true})
 
 -- Motions
 vim.api.nvim_set_keymap('n', '<Up>', 'gk', {noremap=true, silent=true})
