@@ -15,8 +15,8 @@ vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', {noremap=true, silent=true})
 vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', {noremap=true, silent=true})
 
 -- Quick splits
-vim.api.nvim_set_keymap('n', '<leader>vs', ":vsplit<CR>", {noremap=true, silent=true})
-vim.api.nvim_set_keymap('n', '<leader>ss', ":split<CR>", {noremap=true, silent=true})
+vim.api.nvim_set_keymap('n', '<leader>sv', ":vsplit<CR>", {noremap=true, silent=true})
+vim.api.nvim_set_keymap('n', '<leader>sh', ":split<CR>", {noremap=true, silent=true})
 
 -- Custom vertical movements
 -- half page down / up + center page
