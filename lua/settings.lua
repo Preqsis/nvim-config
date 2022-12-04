@@ -3,7 +3,7 @@
 vim.o.guifont = "DroidSansMono Nerd Font 13"
 
 -- Use system clipboard
-vim.api.nvim_command([[set clipboard=unnamed]])
+vim.api.nvim_command([[set clipboard=unnamedplus]])
 
 -- Show line numbers
 vim.wo.number = true
