@@ -12,15 +12,22 @@ vim.call('plug#begin', '~/.nvim/plugged')
     Plug 'hrsh7th/nvim-cmp'
     Plug 'hrsh7th/cmp-buffer'
     Plug 'hrsh7th/cmp-path'
-    Plug 'saadparwaiz1/cmp_luasnip'
     Plug 'hrsh7th/cmp-nvim-lsp'
     Plug 'hrsh7th/cmp-nvim-lua'
+    -- Plug 'saadparwaiz1/cmp_luasnip'
 
     -- Snippets
-    Plug 'L3MON4D3/LuaSnip'
-    Plug 'rafamadriz/friendly-snippets'
-    Plug 'hrsh7th/cmp-vsnip'
-    Plug 'hrsh7th/vim-vsnip'
+    -- Plug 'L3MON4D3/LuaSnip'
+    -- Plug 'rafamadriz/friendly-snippets'
+    -- Plug 'hrsh7th/cmp-vsnip'
+    -- Plug 'hrsh7th/vim-vsnip'
+    --
+    Plug 'dcampos/nvim-snippy'
+    Plug 'honza/vim-snippets'
+    Plug 'dcampos/cmp-snippy'
+    
+    -- Plug 'sirver/ultisnips'
+    -- Plug('ckunte/latex-snippets-vim')
 
     -- Easy LSP settings
     Plug 'VonHeikemen/lsp-zero.nvim'
@@ -91,6 +98,9 @@ vim.call('plug#begin', '~/.nvim/plugged')
 
     -- Neogen docstring generator
     Plug('danymat/neogen')
+
+    -- Surround
+    -- Plug('kylechui/nvim-surround')
 vim.call('plug#end')
 
 -- Automaticaly install plugins
