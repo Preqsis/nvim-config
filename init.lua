@@ -1,5 +1,9 @@
+-- Remap the leader
 vim.g.mapleader = ","
 
+-------------
+-- PLUGINS --
+-------------
 -- Load plugins
 local Plug = vim.fn["plug#"]
 vim.call('plug#begin', '~/.nvim/plugged')
@@ -7,30 +11,24 @@ vim.call('plug#begin', '~/.nvim/plugged')
     Plug 'neovim/nvim-lspconfig'
     Plug 'williamboman/mason.nvim'
     Plug 'williamboman/mason-lspconfig.nvim'
-
+    Plug 'jose-elias-alvarez/null-ls.nvim'
+    
     -- Autocompletion
     Plug 'hrsh7th/nvim-cmp'
     Plug 'hrsh7th/cmp-buffer'
     Plug 'hrsh7th/cmp-path'
     Plug 'hrsh7th/cmp-nvim-lsp'
     Plug 'hrsh7th/cmp-nvim-lua'
-    -- Plug 'saadparwaiz1/cmp_luasnip'
 
     -- Snippets
-    -- Plug 'L3MON4D3/LuaSnip'
+    Plug 'L3MON4D3/LuaSnip'
     -- Plug 'rafamadriz/friendly-snippets'
     -- Plug 'hrsh7th/cmp-vsnip'
     -- Plug 'hrsh7th/vim-vsnip'
-    --
     Plug 'dcampos/nvim-snippy'
     Plug 'honza/vim-snippets'
     Plug 'dcampos/cmp-snippy'
-    
-    -- Plug 'sirver/ultisnips'
-    -- Plug('ckunte/latex-snippets-vim')
 
-    -- Easy LSP settings
-    Plug 'VonHeikemen/lsp-zero.nvim'
 
     -- Better syntax support
     Plug('nvim-treesitter/nvim-treesitter', {
@@ -47,7 +45,6 @@ vim.call('plug#begin', '~/.nvim/plugged')
     Plug 'nvim-lualine/lualine.nvim'
 
     -- lua bufferline
-    -- Plug 'romgrk/barbar.nvim'
     Plug('akinsho/bufferline.nvim', {
         tag = "v3.*",
         requires = 'kyazdani42/nvim-web-devicons'
@@ -57,9 +54,6 @@ vim.call('plug#begin', '~/.nvim/plugged')
     Plug 'kyazdani42/nvim-tree.lua'
 
     -- Themes
-    -- Plug 'navarasu/onedark.nvim'
-    -- Plug('folke/tokyonight.nvim')
-    -- Plug 'EdenEast/nightfox.nvim'
     Plug 'rebelot/kanagawa.nvim'
 
     -- Alpha start page
@@ -96,11 +90,14 @@ vim.call('plug#begin', '~/.nvim/plugged')
     -- Nerd commenter
     Plug 'preservim/nerdcommenter'
 
-    -- Neogen docstring generator
-    Plug('danymat/neogen')
-
     -- Surround
-    -- Plug('kylechui/nvim-surround')
+    Plug('kylechui/nvim-surround')
+
+    -- Renamer
+    -- VS-like renaming UI
+    Plug('filipdutescu/renamer.nvim', { 
+        branch = 'master' 
+    })
 vim.call('plug#end')
 
 -- Automaticaly install plugins
@@ -111,10 +108,12 @@ autocmd VimEnter *
 \| endif
 ]])
 
+local api = vim.api
+
 -- Colorscheme 
-vim.api.nvim_command("colorscheme kanagawa")
-vim.api.nvim_set_hl(0, "InactiveWindow", {bg="#1f1f28"})
-vim.api.nvim_set_hl(0, "ActiveWindow", {bg="#16161d"})
+api.nvim_command("colorscheme kanagawa")
+api.nvim_set_hl(0, "InactiveWindow", {bg="#1f1f28"})
+api.nvim_set_hl(0, "ActiveWindow", {bg="#16161d"})
 vim.cmd([[set winhighlight=Normal:ActiveWindow,NormalNC:InactiveWindow]])
 
 -- Setups
@@ -126,7 +125,7 @@ require 'settings'
 -- Keymaps
 require 'keymaps'
 
--- LSP settings
+-- LSP settings 
 require 'lsp-config'
 
 -- Completion settings
