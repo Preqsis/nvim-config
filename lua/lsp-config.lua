@@ -48,7 +48,9 @@ null_ls.setup({
     debug = false,
     sources = {
         formatting.black.with({extra_args = {"--fast"}}),
-        diagnostics.flake8.with({extra_args = {"--ignore=E501"}})
+        -- formatting.isort,
+        diagnostics.flake8.with({extra_args = {"--ignore=E501"}}),
+        -- diagnostics.mypy
     }
 })
 
