@@ -1,4 +1,3 @@
--- Treesitter
 require'nvim-treesitter.configs'.setup {
     ensure_installed = "all",
     sync_install = false, 
@@ -10,10 +9,3 @@ require'nvim-treesitter.configs'.setup {
         enable = true
     }
 }
-
-require("indent_blankline").setup {
-    show_current_context = true,
-}
-
--- Surroud
-require("nvim-surround").setup({})

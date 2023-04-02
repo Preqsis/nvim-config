@@ -21,7 +21,11 @@ require("packer").startup(function()
     })
     
     -- Start page
-    use 'goolord/alpha-nvim'
+    use {'goolord/alpha-nvim',
+        config = function ()
+            require'alpha'.setup(require'alpha.themes.startify'.config)
+        end
+    }
     
     -- lualine
     use {'nvim-lualine/lualine.nvim',
@@ -31,7 +35,7 @@ require("packer").startup(function()
     -- lua bufferline
     use {'akinsho/bufferline.nvim',
         after = "catppuccin",
-        tag = "v3.*",
+        -- tag = "v3.*",
         requires = {'kyazdani42/nvim-web-devicons', opt = true},
         config = function()
             require("bufferline").setup {
@@ -39,7 +43,6 @@ require("packer").startup(function()
                 options = {
                     buffer_close_icon = "",
                     close_icon = "",
-
                 },
             } 
         end
@@ -71,9 +74,19 @@ require("packer").startup(function()
         {'nvim-treesitter/nvim-treesitter', run = ":TSUpdate"},
         'jiangmiao/auto-pairs', -- auto-pair brackets
         "p00f/nvim-ts-rainbow", -- rainbow brackets
-        'lukas-reineke/indent-blankline.nvim', -- indentation highlighting,
-        'kylechui/nvim-surround' -- surround
     }
+    use {'kylechui/nvim-surround', 
+        config = function()
+            require("nvim-surround").setup{}
+        end
+    }
+    use { 'lukas-reineke/indent-blankline.nvim', 
+        config = function()
+            require("indent_blankline").setup {
+                show_current_context = true,
+            }
+        end
+    } 
     
     -- Autocompletion
     use {
@@ -93,12 +106,16 @@ require("packer").startup(function()
     
     -- Git
     use {
-        'lewis6991/gitsigns.nvim', -- Git hunks
         'tpope/vim-fugitive', -- Git wrapper accessible through :Git ... 
         'tpope/vim-rhubarb', -- Enables GBrowse
         'junegunn/gv.vim', -- Commit browser
-        'sindrets/diffview.nvim' -- Git diff view
+        'sindrets/diffview.nvim', -- Git diff view
     }  
+    use {'lewis6991/gitsigns.nvim', -- Git hunks
+        config = function() 
+            require("gitsigns").setup{}
+        end
+    }
     
     -- Nerd commenter
     use 'preservim/nerdcommenter'
@@ -107,7 +124,11 @@ require("packer").startup(function()
     use {'filipdutescu/renamer.nvim', branch = 'master'}
 
     -- Undo-tree
-    use "mbbill/undotree"
+    use { "mbbill/undotree",
+        config = function()
+            vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+        end
+    }
 
     if packer_bootstrap then
         require('packer').sync()
