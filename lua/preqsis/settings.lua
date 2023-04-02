@@ -1,12 +1,6 @@
 -- Remap the leader
 vim.g.mapleader = ","
 
--- Colorscheme 
-vim.api.nvim_command("colorscheme kanagawa")
-vim.api.nvim_set_hl(0, "InactiveWindow", {bg="#1f1f28"})
-vim.api.nvim_set_hl(0, "ActiveWindow", {bg="#16161d"})
-vim.cmd([[set winhighlight=Normal:ActiveWindow,NormalNC:InactiveWindow]])
-
 -- Set guifont
 -- beacause of devincons -> Nerd fonts
 vim.o.guifont = "DroidSansMono Nerd Font 13"
@@ -24,15 +18,6 @@ vim.wo.relativenumber = true
 vim.opt.cursorline = true
 vim.opt.cursorlineopt = 'number'
 
--- Set line numbers colors
-vim.api.nvim_set_hl(0, "LineNr", {fg="#008080"})
-vim.api.nvim_set_hl(0, "CursorLineNr", {fg="#ffff00"})
-vim.cmd("set signcolumn=yes")
-
--- Highlight column 81
--- very dark red
-vim.opt.colorcolumn = "81"
-vim.api.nvim_set_hl(0, "ColorColumn", {bg="#220404"})
 
 -- Real programmers don't use TABs but spaces!!!
 vim.o.tabstop       = 4
@@ -54,7 +39,7 @@ vim.o.swapfile      = false
 
 -- Enable code folding
 vim.o.foldmethod = 'indent'
-
+--
 -- Open with first level automaticaly folded
 vim.o.foldlevelstart = 0
 

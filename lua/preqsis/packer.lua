@@ -15,7 +15,10 @@ require("packer").startup(function()
     use "wbthomason/packer.nvim"
     
     -- Colorscheme
-    use 'rebelot/kanagawa.nvim'
+    use({
+        "catppuccin/nvim",
+        as = "catppuccin"
+    })
     
     -- Start page
     use 'goolord/alpha-nvim'
@@ -27,8 +30,19 @@ require("packer").startup(function()
     
     -- lua bufferline
     use {'akinsho/bufferline.nvim',
+        after = "catppuccin",
         tag = "v3.*",
-        requires = {'kyazdani42/nvim-web-devicons', opt = true}
+        requires = {'kyazdani42/nvim-web-devicons', opt = true},
+        config = function()
+            require("bufferline").setup {
+                highlights = require("catppuccin.groups.integrations.bufferline").get(),
+                options = {
+                    buffer_close_icon = "",
+                    close_icon = "",
+
+                },
+            } 
+        end
     }
     
     -- Nvimtree file explorer
@@ -91,6 +105,9 @@ require("packer").startup(function()
     
     -- Renamer (VS-like renaming UI)
     use {'filipdutescu/renamer.nvim', branch = 'master'}
+
+    -- Undo-tree
+    use "mbbill/undotree"
 
     if packer_bootstrap then
         require('packer').sync()
