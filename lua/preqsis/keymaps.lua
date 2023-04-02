@@ -29,16 +29,6 @@ map('n', '<C-u>', '<C-u>zz', opts)
 -- Fold / Unfold by <Space>
 map('n', '<Space>', 'zA', opts)
 
--- NvimTree
-map('n', '<C-g>', ':NvimTreeToggle<CR>', opts)
-map('n', '<F8>', ':NvimTreeToggle<CR>', opts)
-map('i', '<C-g>', '<Esc>:NvimTreeToggle<CR>', opts)
-map('i', '<F8>', '<Esc>:NvimTreeToggle<CR>', opts)
-
--- TagBar
-map('n', '<F9>', ':TagbarToggle<CR>', opts)
-map('i', '<F9>', ':TagbarToggle<CR>', opts)
-
 -- Motions
 map('n', '<Up>', 'gk', opts)
 map('n', '<Down>', 'gj', opts)
@@ -48,6 +38,11 @@ map('i', '<Up>', '<C-o>gk', opts)
 map('i', '<Down>', '<C-o>gj', opts)
 map('i', '<Home>', '<C-o>g<Home>', opts)
 map('i', '<End>', '<C-o>g<End>', opts)
+
+-- For easier string writing/editing
+-- in insert mode search for next " and append after
+map("i", "<C-a>", "<Esc>f\"a", opts)
+map("n", "<C-a>", "f\"a", opts)
 
 -- Czech chars are numbers for easier motions
 -- in normal mode
@@ -73,19 +68,3 @@ map('v', 'á', '8', opts)
 map('v', 'í', '9', opts)
 map('v', 'é', '0', opts)
 
--- Telescope
-map('n', '<leader>ff', '<cmd>Telescope find_files<CR>', opts)
-map('n', '<leader>fg', '<cmd>Telescope live_grep<CR>', opts)
-map('n', '<leader>fb', '<cmd>Telescope buffers<CR>', opts)
-map('n', '<leader>fh', '<cmd>Telescope help_tags<CR>', opts)
-map('n', '<leader>fo', '<cmd>Telescope oldfiles<CR>', opts)
-
--- Renamer
-map('i', '<F2>', '<cmd>lua require("renamer").rename()<cr>', opts)
-map('n', '<leader>rn', '<cmd>lua require("renamer").rename()<cr>', opts)
-map('v', '<leader>rn', '<cmd>lua require("renamer").rename()<cr>', opts)
-
--- For easier string writing/editing
--- in insert mode search for next " and append after
-map("i", "<C-a>", "<Esc>f\"a", opts)
-map("n", "<C-a>", "f\"a", opts)

@@ -11,17 +11,14 @@ for _, server in pairs(lsp_servers) do
     require('lspconfig')[server].setup {}
 end
 
--- Disable diagnostics entirely
--- vim.lsp.handlers["textDocument/publishDiagnostics"] = function() end
-
 -- this is for diagnositcs signs on the line number column
 -- use this to beautify the plain E W signs to more fun ones
 -- !important nerdfonts needs to be setup for this to work in your terminal
-local signs = { Error = "", Warn = "", Hint = "", Info = "" }
-for type, icon in pairs(signs) do
-    local hl = "DiagnosticSign" .. type
-    vim.fn.sign_define(hl, { text = icon, texthl= hl, numhl = hl })
-end
+-- local signs = { Error = "", Warn = "", Hint = "", Info = "" }
+-- for type, icon in pairs(signs) do
+    -- local hl = "DiagnosticSign" .. type
+    -- vim.fn.sign_define(hl, { text = icon, texthl= hl, numhl = hl })
+-- end
 
 vim.api.nvim_set_hl(0, "DiagnosticError", {fg="Red"})
 vim.api.nvim_set_hl(0, "DiagnosticWarn", {fg="Orange"})
@@ -36,9 +33,8 @@ vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
 vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
 vim.keymap.set('n', 'gr', vim.lsp.buf.implementation, bufopts)
 vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-
 vim.keymap.set('n', '<leader>ft', vim.lsp.buf.format, bufopts)
--- vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
+vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
 
 local null_ls = require("null-ls")
 local formatting = null_ls.builtins.formatting
@@ -53,8 +49,6 @@ null_ls.setup({
         -- diagnostics.mypy
     }
 })
-
-
 
 -- vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
 -- vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)

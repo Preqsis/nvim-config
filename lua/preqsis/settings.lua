@@ -1,6 +1,16 @@
+-- Remap the leader
+vim.g.mapleader = ","
+
+-- Colorscheme 
+vim.api.nvim_command("colorscheme kanagawa")
+vim.api.nvim_set_hl(0, "InactiveWindow", {bg="#1f1f28"})
+vim.api.nvim_set_hl(0, "ActiveWindow", {bg="#16161d"})
+vim.cmd([[set winhighlight=Normal:ActiveWindow,NormalNC:InactiveWindow]])
+
 -- Set guifont
 -- beacause of devincons -> Nerd fonts
 vim.o.guifont = "DroidSansMono Nerd Font 13"
+-- vim.o.guifont = "MesloLGS NF 13"
 
 -- Use system clipboard
 vim.api.nvim_command([[set clipboard=unnamedplus]])
@@ -18,25 +28,6 @@ vim.opt.cursorlineopt = 'number'
 vim.api.nvim_set_hl(0, "LineNr", {fg="#008080"})
 vim.api.nvim_set_hl(0, "CursorLineNr", {fg="#ffff00"})
 vim.cmd("set signcolumn=yes")
-
-vim.cmd([[
-    highlight SignColumn guibg=NONE
-    highlight GitSignsAdd guibg=NONE
-    highlight DiagnosticSignError guibg=NONE
-    highlight DiagnosticSignWarn guibg=NONE
-    highlight DiagnosticSignHint guibg=NONE
-    highlight DiagnosticSignInfo guibg=NONE
-]])
-
--- vim.cmd("set signcolumn=yes")
--- vim.api.nvim_set_hl(0, "SignColumn", {guibg=NONE})
--- vim.api.nvim_set_hl(0, "GitSignsAdd", {guibg=NONE})
--- vim.api.nvim_set_hl(0, "DiagnosticSignError", {guibg=NONE})
--- vim.api.nvim_set_hl(0, "DiagnosticSignWarn", {guibg=NONE})
--- vim.api.nvim_set_hl(0, "DiagnosticSignHint", {guibg=NONE})
--- vim.api.nvim_set_hl(0, "DiagnosticSignInfo", {guibg=NONE})
-
-
 
 -- Highlight column 81
 -- very dark red
@@ -81,9 +72,3 @@ vim.g.signify_sign_show_text = 1
 vim.cmd("setlocal wrap linebreak nolist")
 vim.cmd("set virtualedit=")
 vim.cmd("setlocal display+=lastline")
-
--- Sign column always visible and color matched with Line Numbers
--- vim.api.create_autocmd(
-    -- {pattern = "*", command = "ColorScheme * highlight! link SignColumn LineNr"}
--- )
--- vim.api.create([[autocmd ColorScheme * highlight! link SignColumn LineNr]])

@@ -8,35 +8,34 @@ local ensure_packer = function()
     end
     return false
 end
-
 local packer_bootstrap = ensure_packer()
 
 require("packer").startup(function()
+    -- Packer
     use "wbthomason/packer.nvim"
     
-    -- shared dependencies
-    local dev_icons = 'kyazdani42/nvim-web-devicons'
-
     -- Colorscheme
     use 'rebelot/kanagawa.nvim'
     
+    -- Start page
+    use 'goolord/alpha-nvim'
+    
     -- lualine
-    -- bottom status / info bar
     use {'nvim-lualine/lualine.nvim',
-        requires = dev_icons
+        requires = 'kyazdani42/nvim-web-devicons'
     }
-
+    
     -- lua bufferline
-    use {'akinsho/bufferline.nvim', 
+    use {'akinsho/bufferline.nvim',
         tag = "v3.*",
-        requires = {dev_icons, opt = true}
+        requires = {'kyazdani42/nvim-web-devicons', opt = true}
     }
     
     -- Nvimtree file explorer
     use {'kyazdani42/nvim-tree.lua', 
-        requires = {dev_icons, opt = true}
+        requires = {'kyazdani42/nvim-web-devicons', opt = true}
     }
-
+    
     -- LSP 
     use {
         'williamboman/mason.nvim',
@@ -44,16 +43,7 @@ require("packer").startup(function()
         'neovim/nvim-lspconfig',
     }
     use 'jose-elias-alvarez/null-ls.nvim'
-
-    -- Autocompletion
-    use {
-        'hrsh7th/nvim-cmp',
-        'hrsh7th/cmp-buffer',
-        'hrsh7th/cmp-path',
-        'hrsh7th/cmp-nvim-lsp',
-        'hrsh7th/cmp-nvim-lua',
-    }
-
+    
     -- Snippets
     use {
         'L3MON4D3/LuaSnip',
@@ -61,7 +51,7 @@ require("packer").startup(function()
         'honza/vim-snippets',
         'dcampos/cmp-snippy'
     }
-
+    
     -- Syntax
     use {
         {'nvim-treesitter/nvim-treesitter', run = ":TSUpdate"},
@@ -70,13 +60,23 @@ require("packer").startup(function()
         'lukas-reineke/indent-blankline.nvim', -- indentation highlighting,
         'kylechui/nvim-surround' -- surround
     }
-
+    
+    -- Autocompletion
+    use {
+        'hrsh7th/nvim-cmp',
+        'hrsh7th/cmp-buffer',
+        'hrsh7th/cmp-path',
+        'hrsh7th/cmp-nvim-lsp',
+        'hrsh7th/cmp-nvim-lua',
+        'hrsh7th/cmp-cmdline',
+    }
+    
     -- Telescope
     use {'nvim-telescope/telescope.nvim', 
         tag = "0.1.1", 
         requires = {"nvim-lua/plenary.nvim"}
     }
-
+    
     -- Git
     use {
         'lewis6991/gitsigns.nvim', -- Git hunks
@@ -85,22 +85,13 @@ require("packer").startup(function()
         'junegunn/gv.vim', -- Commit browser
         'sindrets/diffview.nvim' -- Git diff view
     }  
-
-    -- Start page
-    use 'goolord/alpha-nvim' 
-    
-    -- Renamer (VS-like renaming UI)
-    use {'filipdutescu/renamer.nvim', branch = 'master'}
-    
-    -- Rooter
-    use 'notjedi/nvim-rooter.lua'
     
     -- Nerd commenter
     use 'preservim/nerdcommenter'
     
-    -- Tagbar
-    use 'preservim/tagbar'
-    
+    -- Renamer (VS-like renaming UI)
+    use {'filipdutescu/renamer.nvim', branch = 'master'}
+
     if packer_bootstrap then
         require('packer').sync()
     end
