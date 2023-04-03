@@ -35,7 +35,6 @@ require("packer").startup(function()
     -- lua bufferline
     use {'akinsho/bufferline.nvim',
         after = "catppuccin",
-        -- tag = "v3.*",
         requires = {'kyazdani42/nvim-web-devicons', opt = true},
         config = function()
             require("bufferline").setup {
@@ -70,10 +69,12 @@ require("packer").startup(function()
     }
     
     -- Syntax
-    use {
-        {'nvim-treesitter/nvim-treesitter', run = ":TSUpdate"},
-        'jiangmiao/auto-pairs', -- auto-pair brackets
-        "p00f/nvim-ts-rainbow", -- rainbow brackets
+    use {'nvim-treesitter/nvim-treesitter',
+        run = vim.cmd.TSUpdate,
+        requires = {
+            "p00f/nvim-ts-rainbow", -- rainbow brackets
+            'jiangmiao/auto-pairs', -- auto-pair brackets 
+        }
     }
     use {'kylechui/nvim-surround', 
         config = function()
@@ -89,13 +90,14 @@ require("packer").startup(function()
     } 
     
     -- Autocompletion
-    use {
-        'hrsh7th/nvim-cmp',
-        'hrsh7th/cmp-buffer',
-        'hrsh7th/cmp-path',
-        'hrsh7th/cmp-nvim-lsp',
-        'hrsh7th/cmp-nvim-lua',
-        'hrsh7th/cmp-cmdline',
+    use {'hrsh7th/nvim-cmp',
+        requires = {
+            'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-path',
+            'hrsh7th/cmp-nvim-lsp',
+            'hrsh7th/cmp-nvim-lua',
+            'hrsh7th/cmp-cmdline',
+        }
     }
     
     -- Telescope
@@ -105,6 +107,7 @@ require("packer").startup(function()
     }
     
     -- Git
+    -- TODO: cleanup and optimize git related plugins
     use {
         'tpope/vim-fugitive', -- Git wrapper accessible through :Git ... 
         'tpope/vim-rhubarb', -- Enables GBrowse
@@ -124,11 +127,7 @@ require("packer").startup(function()
     use {'filipdutescu/renamer.nvim', branch = 'master'}
 
     -- Undo-tree
-    use { "mbbill/undotree",
-        config = function()
-            vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
-        end
-    }
+    use "mbbill/undotree"
 
     if packer_bootstrap then
         require('packer').sync()
