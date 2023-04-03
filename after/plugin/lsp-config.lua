@@ -7,7 +7,7 @@ require("mason-lspconfig").setup({
     automatic_installation = true
 })
 
-local nvim_lsp = require("lspconfig")
+local nvim_lsp = (require("lspconfig"))
 
 local config = require("lspconfig/configs")
 local util = require("lspconfig/util")
@@ -26,6 +26,12 @@ nvim_lsp.pyright.setup {
     end
 }
 
+local signs = { Error = "", Warn = "", Hint = "", Info = "" }
+for type, icon in pairs(signs) do
+    local hl = "DiagnosticSign" .. type
+    vim.fn.sign_define(hl, { text = icon, texthl= hl, numhl = hl })
+end
+
 local opts = { noremap=true, silent=true, buffer=bufnr }
 vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
 vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
@@ -35,7 +41,7 @@ vim.keymap.set('n', 'gr', vim.lsp.buf.implementation, opts)
 vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, opts)
 vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
 vim.keymap.set('n', '<leader>ft', vim.lsp.buf.format, opts)
-vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
+-- vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
 vim.keymap.set('n', '<leader>of', vim.diagnostic.open_float, opts)
 
 local null_ls = require("null-ls")
