@@ -14,16 +14,17 @@ require("catppuccin").setup({
         nvimtree = true,
         gitsigns = true,
         cmp = true,
+        -- bufferline = true,
         indent_blankline = {
             enabled = true
-        }
+        },
     }
 })
 
 vim.cmd.colorscheme "catppuccin"
 
 -- Set line numbers colors
-vim.api.nvim_set_hl(0, "LineNr", {fg="#008080"})
+vim.api.nvim_set_hl(0, "LineNr", {fg="#00cccc"})
 vim.api.nvim_set_hl(0, "CursorLineNr", {fg="#ffff00"})
 vim.o.signcolumn = "yes"
 

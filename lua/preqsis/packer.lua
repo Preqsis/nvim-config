@@ -129,6 +129,9 @@ require("packer").startup(function()
     -- Undo-tree
     use "mbbill/undotree"
 
+    -- Tmux integration
+    use 'christoomey/vim-tmux-navigator'
+
     if packer_bootstrap then
         require('packer').sync()
     end

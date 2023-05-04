@@ -39,6 +39,12 @@ map('i', '<Down>', '<C-o>gj', opts)
 map('i', '<Home>', '<C-o>g<Home>', opts)
 map('i', '<End>', '<C-o>g<End>', opts)
 
+-- Yeah, I am that kind of monster.
+-- vim.keymap.set("n", "<Up>", "<Nop")
+-- vim.keymap.set("n", "<Down>", "<Nop")
+-- vim.keymap.set("n", "<Left>", "<Nop")
+-- vim.keymap.set("n", "<Right>", "<Nop")
+
 -- For easier string writing/editing
 -- in insert mode search for next " and append after
 map("i", "<C-a>", "<Esc>f\"a", opts)
@@ -67,4 +73,13 @@ map('v', 'ý', '7', opts)
 map('v', 'á', '8', opts)
 map('v', 'í', '9', opts)
 map('v', 'é', '0', opts)
+
+-- Toddle all folds
+-- vim.keymap.set("n", "<leader>zt", "<cmd>lua vim.o.foldlevel = math.abs(vim.o.foldlevel - 99)<CR>")
+
+-- Experimental
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv") -- incementaly move down
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv") -- incementaly move up
+vim.keymap.set("x", "<leader>p", "\"_dP") -- paste and keep in clipboard
+vim.keymap.set("n", "<leader>cd", ":cd %:p:h<CR>") -- cd to current buffer dir
 

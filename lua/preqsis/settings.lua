@@ -32,8 +32,9 @@ vim.o.writebackup   = false
 vim.o.swapfile      = false
 
 -- Enable code folding
-vim.o.foldmethod = 'indent'
+-- vim.o.foldmethod = 'indent'
 -- vim.o.foldlevelstart = 0
+vim.o.foldenable = false
 
 -- Line wrapping
 vim.cmd("setlocal wrap linebreak nolist")
