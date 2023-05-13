@@ -73,7 +73,7 @@ require("packer").startup(function()
         run = vim.cmd.TSUpdate,
         requires = {
             "p00f/nvim-ts-rainbow", -- rainbow brackets
-            'jiangmiao/auto-pairs', -- auto-pair brackets 
+            -- 'jiangmiao/auto-pairs', -- auto-pair brackets
         }
     }
     use {'kylechui/nvim-surround', 
@@ -88,6 +88,7 @@ require("packer").startup(function()
             }
         end
     } 
+    use {'windwp/nvim-autopairs'}
     
     -- Autocompletion
     use {'hrsh7th/nvim-cmp',
