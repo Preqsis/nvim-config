@@ -31,7 +31,7 @@ vim.o.backup        = false
 vim.o.writebackup   = false
 vim.o.swapfile      = false
 
--- Enable code folding
+-- Code folding
 -- vim.o.foldmethod = 'indent'
 -- vim.o.foldlevelstart = 0
 vim.o.foldenable = false
