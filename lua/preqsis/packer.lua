@@ -120,6 +120,11 @@ require("packer").startup(function()
             require("gitsigns").setup{}
         end
     }
+
+    -- TODO/NOTE/... comments
+    use {'folke/todo-comments.nvim',
+        requires = {"nvim-lua/plenary.nvim"}
+    }
     
     -- Nerd commenter
     use 'preservim/nerdcommenter'
