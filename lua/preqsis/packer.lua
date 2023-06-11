@@ -106,11 +106,16 @@ require("packer").startup(function()
         tag = "0.1.1", 
         requires = {"nvim-lua/plenary.nvim"}
     }
+    -- Telescope extensions
     use {"nvim-telescope/telescope-file-browser.nvim",
         requires = {
             "nvim-telescope/telescope.nvim", 
             "nvim-lua/plenary.nvim"
         }
+    }
+    use {"crusj/bookmarks.nvim",
+        branch = "main",
+        requires = {"kyazdani42/nvim-web-devicons"}
     }
     
     -- Git
@@ -140,25 +145,31 @@ require("packer").startup(function()
     }
 
     -- Notifications
-    use {'rcarriga/nvim-notify'}
-    use {"folke/noice.nvim",
-        requires = {
-            "MunifTanjim/nui.nvim",
-            "rcarriga/nvim-notify",
-        }
-    }
+    -- use {'rcarriga/nvim-notify'}
+    -- use {"folke/noice.nvim",
+    --     requires = {
+    --         "MunifTanjim/nui.nvim",
+    --         -- "rcarriga/nvim-notify",
+    --     }
+    -- }
     
     -- Nerd commenter
     use 'preservim/nerdcommenter'
     
-    -- Renamer (VS-like renaming UI)
-    -- use {'filipdutescu/renamer.nvim', branch = 'master'}
-
     -- Undo-tree
     use "mbbill/undotree"
 
     -- Tmux integration
-    use 'christoomey/vim-tmux-navigator'
+    -- use 'christoomey/vim-tmux-navigator'
+    use {
+        "aserowy/tmux.nvim",
+        config = function()
+            return require("tmux").setup()
+        end
+    }
+
+    -- Virtual env management
+    -- use 'AckslD/swenv.nvim'
 
     if packer_bootstrap then
         require('packer').sync()
