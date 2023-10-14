@@ -15,10 +15,10 @@ require("packer").startup(function()
     use "wbthomason/packer.nvim"
     
     -- Colorscheme
-    use({
+    use {
         "catppuccin/nvim",
         as = "catppuccin"
-    })
+    }
     
     -- Start page
     use {'goolord/alpha-nvim',
@@ -58,7 +58,12 @@ require("packer").startup(function()
         'williamboman/mason-lspconfig.nvim',
         'neovim/nvim-lspconfig',
     }
-    use 'jose-elias-alvarez/null-ls.nvim'
+    use {
+        'nvimdev/guard.nvim',
+        requires = {
+            "nvimdev/guard-collection",
+        }
+    }
     
     -- Snippets
     use {
@@ -72,22 +77,21 @@ require("packer").startup(function()
     use {'nvim-treesitter/nvim-treesitter',
         run = vim.cmd.TSUpdate,
         requires = {
+            'nvim-treesitter/nvim-treesitter-textobjects',
             "p00f/nvim-ts-rainbow", -- rainbow brackets
-            -- 'jiangmiao/auto-pairs', -- auto-pair brackets
         }
     }
+    use {'nvim-treesitter/nvim-treesitter-textobjects'}
     use {'kylechui/nvim-surround', 
         config = function()
             require("nvim-surround").setup{}
         end
     }
-    use { 'lukas-reineke/indent-blankline.nvim', 
+    use { 'lukas-reineke/indent-blankline.nvim',
         config = function()
-            require("indent_blankline").setup {
-                show_current_context = true,
-            }
+            require("ibl").setup {}
         end
-    } 
+    }
     use {'windwp/nvim-autopairs'}
     
     -- Autocompletion
@@ -103,7 +107,7 @@ require("packer").startup(function()
     
     -- Telescope
     use {'nvim-telescope/telescope.nvim', 
-        tag = "0.1.1", 
+        tag = "0.1.4", 
         requires = {"nvim-lua/plenary.nvim"}
     }
     -- Telescope extensions
@@ -122,9 +126,9 @@ require("packer").startup(function()
     -- TODO: cleanup and optimize git related plugins
     use {
         'tpope/vim-fugitive', -- Git wrapper accessible through :Git ... 
-        'tpope/vim-rhubarb', -- Enables GBrowse
-        'junegunn/gv.vim', -- Commit browser
-        'sindrets/diffview.nvim', -- Git diff view
+        -- 'tpope/vim-rhubarb', -- Enables GBrowse
+        -- 'junegunn/gv.vim', -- Commit browser
+        -- 'sindrets/diffview.nvim', -- Git diff view
     }  
     use {'lewis6991/gitsigns.nvim', -- Git hunks
         config = function() 
@@ -144,15 +148,6 @@ require("packer").startup(function()
         end
     }
 
-    -- Notifications
-    -- use {'rcarriga/nvim-notify'}
-    -- use {"folke/noice.nvim",
-    --     requires = {
-    --         "MunifTanjim/nui.nvim",
-    --         -- "rcarriga/nvim-notify",
-    --     }
-    -- }
-    
     -- Nerd commenter
     use 'preservim/nerdcommenter'
     
@@ -168,8 +163,11 @@ require("packer").startup(function()
         end
     }
 
-    -- Virtual env management
-    -- use 'AckslD/swenv.nvim'
+    -- UFO (folding plugin)
+    use {
+        "kevinhwang91/nvim-ufo",
+        requires = {'kevinhwang91/promise-async'}
+    }
 
     if packer_bootstrap then
         require('packer').sync()

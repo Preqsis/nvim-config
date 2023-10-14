@@ -31,11 +31,6 @@ vim.o.backup        = false
 vim.o.writebackup   = false
 vim.o.swapfile      = false
 
--- Code folding
--- vim.o.foldmethod = 'indent'
--- vim.o.foldlevelstart = 0
-vim.o.foldenable = false
-
 -- Line wrapping
 vim.cmd("setlocal wrap linebreak nolist")
 vim.cmd("set virtualedit=")
