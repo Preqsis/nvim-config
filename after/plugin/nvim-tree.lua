@@ -9,5 +9,5 @@ require("nvim-tree").setup({
     }
 })
 
-vim.keymap.set('n', '<C-g>', ':NvimTreeToggle<CR>', {})
+-- vim.keymap.set('n', '<C-g>', ':NvimTreeToggle<CR>', {})
 vim.keymap.set('n', '<leader>g', ':NvimTreeToggle<CR>', {})

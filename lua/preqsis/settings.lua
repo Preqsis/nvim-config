@@ -1,6 +1,3 @@
--- Remap the leader
-vim.g.mapleader = ","
-
 -- Use system clipboard
 vim.o.clipboard = "unnamedplus"
 
