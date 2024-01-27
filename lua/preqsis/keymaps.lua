@@ -39,11 +39,6 @@ map('i', '<Down>', '<C-o>gj', opts)
 map('i', '<Home>', '<C-o>g<Home>', opts)
 map('i', '<End>', '<C-o>g<End>', opts)
 
--- For easier string writing/editing
--- in insert mode search for next " and append after
-map("i", "<C-a>", "<Esc>f\"a", opts)
-map("n", "<C-a>", "f\"a", opts)
-
 -- Czech chars are numbers for easier motions
 for i, v in ipairs({'é', '+', 'ě', 'š', 'č', 'ř', 'ž', 'ý', 'á', 'í'}) do
     map('n', v, tostring(i-1), opts)
