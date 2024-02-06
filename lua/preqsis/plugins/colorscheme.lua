@@ -1,4 +1,5 @@
 return {
+    {
     "catppuccin/nvim",
     name = "catppuccin",
     priority = 1000,
@@ -8,11 +9,11 @@ return {
         catppuccin.setup({
             flavour = "mocha",
             term_colors = false,
-            dim_inactive = {
-                enabled = true,
-                shade = "dark",
-                percentage = 0.15
-            },
+            -- dim_inactive = {
+                -- enabled = true,
+                -- shade = "dark",
+                -- percentage = 0.15
+            -- },
             styles = {
                 functions = {"bold"},
                 conditionals = {}
@@ -40,4 +41,13 @@ return {
         vim.opt.colorcolumn = "81"
         vim.api.nvim_set_hl(0, "ColorColumn", {bg="#220404"})
     end
+    },
+    -- {
+        -- "xiyaowong/transparent.nvim",
+        -- config = function ()
+            -- require('transparent').clear_prefix('lualine')
+            -- require('transparent').clear_prefix('BufferLine')
+        -- end
+--
+    -- }
 }

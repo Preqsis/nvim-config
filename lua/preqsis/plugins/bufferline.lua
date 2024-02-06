@@ -4,8 +4,8 @@ return {'akinsho/bufferline.nvim',
         require("bufferline").setup {
             highlights = require("catppuccin.groups.integrations.bufferline").get(),
             options = {
-                buffer_close_icon = "",
-                close_icon = "",
+                buffer_close_icon = "󱎘",
+                close_icon = "󱎘",
             },
         }
     end
